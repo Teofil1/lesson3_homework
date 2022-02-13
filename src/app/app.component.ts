@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TreeNode } from './model/treeNode';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Lesson3_HOMEWORK';
+
+  treeNode: TreeNode = {
+      value: "Root",
+      isRoot: true,
+      subTreeNodes: [
+        {
+          value: "Subtree 1",
+          subTreeNodes: []
+        },
+        {
+          value: "Subtree 2",
+          subTreeNodes: []
+        }
+      ]
+    };
 }

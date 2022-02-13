@@ -1,0 +1,26 @@
+<div *ngIf="treeNode.value!=''" class="treeNode">
+  {{treeNode.value}}
+  
+  <span *ngIf="!isAddingMode && !isEditingMode">
+    <button (click)="isAddingMode = true">Add</button>
+    <button (click)="isEditingMode = true">Edit</button>
+    <button *ngIf="!treeNode.isRoot" (click)="deleteTreeNode()">Delete</button>
+  </span>
+
+  <span *ngIf="isAddingMode">
+    <input type="text" [(ngModel)]="newTreeNodeValue">
+    <button (click)="addTreeNode()">Save</button>
+    <button (click)="cancelAddTreeNode()">Cancel</button>
+  </span>
+
+  <span *ngIf="isEditingMode">
+    <input type="text" [(ngModel)]="editTreeNodeValue">
+    <button (click)="editTreeNode()">Save</button>
+    <button (click)="cancelEditTreeNode()">Cancel</button>
+  </span>
+  
+
+  <div *ngFor="let treeNode of treeNode.subTreeNodes">
+    <tree-node [treeNode]="treeNode"></tree-node>
+  </div>
+</div>
